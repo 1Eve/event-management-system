@@ -1,6 +1,6 @@
 <?php
 
-function event_enqueue_styling(){
+function eventtheme_script_enqueue(){
     wp_enqueue_style('customstyle', get_template_directory_uri().'/custom/custom.css', [], '3.1.1', 'all');
     wp_enqueue_script('customjs', get_template_directory_uri(). '/custom/custom.js',[], '1.0.0', true);
 
@@ -13,9 +13,38 @@ function event_enqueue_styling(){
     wp_enqueue_script ('jsbootstrap');
 }
 
-add_action('wp_enqueue_scripts', 'event_enqueue_styling');
+add_action('wp_enqueue_scripts', 'eventtheme_script_enqueue');
 
-//Add Theme Support
+function eventtheme_setup(){
+    //Add Menu
 add_theme_support('menus');
 register_nav_menu('primary', 'Primary Header');
 register_nav_menu('secondary', 'Footer Navigation');
+}
+
+//introduce navwalker
+// navwalker
+if (!file_exists(get_template_directory() . '/class-wp-bootstrap-navwalker.php')) {
+    return new WP_Error('class-wp-bootstrap-navwalker-missing', __('It appears the class-wp-bootstrap-navwalker.php file may be missing.', 'wp-bootstrap-navwalker'));
+} else {
+    require_once get_template_directory() . '/class-wp-bootstrap-navwalker.php';
+}
+
+add_action('init', 'eventtheme_setup');
+
+/**
+ * theme support
+ */
+
+ add_theme_support('custom-background');
+ add_theme_support('custom-header');
+ add_theme_support('post-thumbnails');
+ 
+ 
+ //declare global variables
+ 
+ global $successmessage;
+ $successmessage;
+ 
+ global $errormessage;
+ $errormessage;
