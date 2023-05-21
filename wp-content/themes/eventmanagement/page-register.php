@@ -13,42 +13,42 @@
 ?>
 
 <?php
-    if (isset($_POST['register'])){
-        $fullname = $_POST['fullname'];
-        $email = $_POST['email'];
-        $phonenumber = $_POST['phonenumber'];
-        $password = $_POST['password'];
+//     if (isset($_POST['register'])){
+//         $fullname = $_POST['fullname'];
+//         $email = $_POST['email'];
+//         $phonenumber = $_POST['phonenumber'];
+//         $password = $_POST['password'];
     
-        $user_id = wp_create_user($email, $password, $email);
+//         $user_id = wp_create_user($email, $password, $email);
     
-        if (!is_wp_error($user_id)){
-            // wp_update_user(array(
-            //     'ID' => $user_id,
-            //     'first_name' => $fullname,
-            //     'nickname' => $fullname
-            // ));
-            update_user_meta($user_id, 'fullname', $fullname);
-            update_user_meta($user_id, 'email', $email);
-            update_user_meta($user_id, 'phonenumber', $phonenumber);
+//         if (!is_wp_error($user_id)){
+//             // wp_update_user(array(
+//             //     'ID' => $user_id,
+//             //     'first_name' => $fullname,
+//             //     'nickname' => $fullname
+//             // ));
+//             update_user_meta($user_id, 'fullname', $fullname);
+//             update_user_meta($user_id, 'email', $email);
+//             update_user_meta($user_id, 'phonenumber', $phonenumber);
 
-            $user = wp_signon([
-                'user_login' => $email,
-                'user_password' => $password
-            ]);
+//             $user = wp_signon([
+//                 'user_login' => $email,
+//                 'user_password' => $password
+//             ]);
     
-            if (!is_wp_error($user)) {
-                wp_set_current_user($user->ID);
-                wp_set_auth_cookie($user->ID);
-                do_action('wp_login', $user->user_login, $user);
+//             if (!is_wp_error($user)) {
+//                 wp_set_current_user($user->ID);
+//                 wp_set_auth_cookie($user->ID);
+//                 do_action('wp_login', $user->user_login, $user);
     
     
-            wp_redirect(home_url());
-            exit;
-        } else {
-            $err = $user_id->get_error_message();
-        }
-    }
-}
+//             wp_redirect(home_url());
+//             exit;
+//         } else {
+//             $err = $user_id->get_error_message();
+//         }
+//     }
+// }
 ?>
 
 <?php get_header(); ?>
