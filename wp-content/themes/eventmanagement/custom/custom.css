@@ -1,0 +1,150 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Event Details */
+.host{
+    opacity: 0.7;
+}
+.container-description {
+    padding: 0 2%;
+}
+
+.event-description {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    height: 100vh;
+
+}
+
+.event-img {
+    background-color: black;
+    height: 100%;
+    background-image: url('../assests/miguel-paley-live-in-concert2023-05-19T13-25-32.168709.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+.event-info {
+    padding-left: 20px;
+}
+.event-location, .event-date{
+    display: flex;
+}
+.event-location p, .event-date p{
+    margin-top: 8px;
+    padding-left: 5px;
+}
+.event-location .icon,.event-date .icon{
+    font-size: 30px;
+}
+
+/* Submit Form */
+.BookTicket {
+    position: relative;
+}
+
+.BookTicket input[type="submit"] {
+    padding-right: 40px;
+}
+
+.BookTicket .icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+}
+
+/* Pricing */
+.div-pricing {
+    display: flex;
+    justify-content: center;
+}
+
+.div-pricing>div {
+    width: 800px;
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: 20% 80%;
+}
+
+.pricing-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.pricing-header h6 {
+    /* margin-bottom: 1rem; */
+}
+
+.tickets div {
+    display: flex;
+    justify-content: space-between;
+    background-color: wheat;
+}
+/* Ticket counter */
+
+.ticket-counter {
+    display: flex;
+    align-items: center;
+}
+
+.subtract-btn,
+.add-btn {
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: #f0f0f0;
+    color: #555;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.ticket-count {
+    margin: 0 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Ticket Pop Up */
+#popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Pop Up */
+  #popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  #close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    color: #888;
+  }
+  /* More Events */
