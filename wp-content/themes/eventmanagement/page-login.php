@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 
 /**
  * Template Name: Login Template
@@ -30,7 +30,7 @@
     // }
  ?>
  <?php
- get_header();
+//  get_header();
  ?>
 
  <div class="bg-wwhite">
@@ -59,4 +59,4 @@
             </div>
         </form>
     </div>
- </div>
+ </div> -->

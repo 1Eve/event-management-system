@@ -51,19 +51,19 @@
 // }
 ?>
 
-<?php get_header(); ?>
+<?php //get_header(); ?>
 
-<div class="bg-white">
+<!-- <div class="bg-white">
     <div class="bg-light w-75 m-auto mt-5 rounded-1 round shadow-sm border p-4">
         <div class="text-center mb-2">
             <h3>Register</h3>
         </div>
 
-        <?php if (!empty($err)) : ?>
-            <p class="form-error"><?php echo esc_html($err); ?></p>
-        <?php endif; ?>
+        <?php //if (!empty($err)) : ?>
+            <p class="form-error"><?php //echo esc_html($err); ?></p>
+        <?php //endif; ?>
 
-        <form action="<?php echo esc_url($_SERVER['REQUEST_URI']); ?>" method="post">
+        <form action="<?php //echo esc_url($_SERVER['REQUEST_URI']); ?>" method="post">
             <div class="form-group mb-2">
                 <label for="fullname" class="mb-1">Full Name</label>
                 <input type="text" class="form-control" name="fullname" placeholder="Full Name" required>
@@ -88,6 +88,6 @@
             </div>
         </form>
     </div>
-</div>
+</div> -->
 
-<?php get_footer(); ?>
+<?php //get_footer(); ?>
