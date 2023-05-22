@@ -3,6 +3,12 @@
 /**
  * Template Name: Login Template
  */
+
+ // Check if user is already logged in
+// if (is_user_logged_in()) {
+//     wp_redirect(home_url()); // Redirect to home page
+//     exit();
+// }
  ?>
 
  <?php
@@ -12,10 +18,10 @@
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        $user = wp_signon([
-            'user_login' => $email,
-            'user_pass' => $password
-        ]);
+    //     $user = wp_signon([
+    //         'user_login' => $email,
+    //         'user_pass' => $password
+    //     ]);
 
         if(!is_wp_error($user)){
             wp_set_current_user($user->ID);
@@ -30,14 +36,18 @@
     }
  ?>
  <?php
- get_header();
+//  get_header();
  ?>
 
- <div class="bg-wwhite">
+ <div class="bg-white">
     <div class="bg-light w-50 m-auto shadow-sm mt-5 round rounded-1 border p-4">
         <div class="text-center mb-3">
             <h3>Login</h3>
         </div>
+        <?php if (!empty($err)) : ?>
+            <p class="error"><?php echo $err; ?></p>
+        <?php endif; ?>
+
         <form action="" method="post">
             <div class="form-group row mb-4">
                 <label for="email" class="col-sm-2 col-form-label">Email</label>
@@ -52,7 +62,7 @@
                 </div>
             </div>
             <div class="d-flex justify-content-center align-items-center">
-                <button class="btn btn-primary" name="registerbtn" type="submit">Login</button>
+                <button class="btn btn-primary" name="loginbtn" type="submit">Login</button>
             </div>
             <div class="text-center mt-1">
                 <p>Don't have an account? <a href="/eventmanagementsystem/register">Register</a></p>  
