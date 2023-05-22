@@ -161,3 +161,36 @@
 }
 
 /* More Events */
+
+/* Footer */
+footer{
+    display: flex;
+    flex-direction: column;
+
+    background-color:rgb(13, 4, 52);
+}
+.footer{
+    color: #F5F2F8;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 10px;
+    
+}
+.footer a{
+    text-decoration: none;
+    cursor: pointer;
+    color: #F5F2F8;
+}
+.footer a:hover{
+    color: #fff;
+}
+.footer>div{
+    padding: 10px 10px 0 10px;
+}
+.copyright{
+    color: #F5F2F8;
+    text-align: center;
+}
+hr{
+    color: #382B7F;
+}
