@@ -4,9 +4,10 @@
 }
 
 /* Event Details */
-.host{
+.host {
     opacity: 0.7;
 }
+
 .container-description {
     padding: 0 2%;
 }
@@ -30,26 +31,42 @@
 .event-info {
     padding-left: 20px;
 }
-.event-location, .event-date{
+
+.event-location,
+.event-date {
     display: flex;
 }
-.event-location p, .event-date p{
+
+.event-location p,
+.event-date p {
     margin-top: 8px;
     padding-left: 5px;
 }
-.event-location .icon,.event-date .icon{
+
+.event-location .icon,
+.event-date .icon {
     font-size: 30px;
 }
 
 /* Submit Form */
+.TicketButton {
+    background-color: blue;
+    border-radius: 5px;
+    padding: 12px 40px;
+    width: 200px;
+    text-align: center;
+
+    
+}
+
 .BookTicket {
+    background-color: blue;
+    color: #fff;
     position: relative;
-}
-
-.BookTicket input[type="submit"] {
     padding-right: 40px;
+    border: none;
+    font-size: 1.1em;
 }
-
 .BookTicket .icon {
     position: absolute;
     top: 50%;
@@ -58,15 +75,46 @@
 }
 
 /* Pricing */
-.div-pricing {
-    display: flex;
-    justify-content: center;
+.section-pricing {
+    /* display: flex;
+    justify-content: center; */
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.div-pricing>div {
+.section-pricing>div {
     width: 800px;
 }
 
+.hidden {}
+
+#popup {}
+
+/* close button */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    color: #888;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/*  */
 .pricing-grid {
     display: grid;
     grid-template-columns: 20% 80%;
@@ -87,6 +135,7 @@
     justify-content: space-between;
     background-color: wheat;
 }
+
 /* Ticket counter */
 
 .ticket-counter {
@@ -111,40 +160,4 @@
     font-weight: bold;
 }
 
-/* Ticket Pop Up */
-#popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 9999;
-    background-color: #fff;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  }
-
-  /* Pop Up */
-  #popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 9999;
-    background-color: #fff;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  }
-  
-  .hidden {
-    display: none;
-  }
-  
-  #close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-    font-size: 24px;
-    color: #888;
-  }
-  /* More Events */
+/* More Events */
