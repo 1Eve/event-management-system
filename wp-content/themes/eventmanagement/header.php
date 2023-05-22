@@ -27,37 +27,38 @@ endif;
         if ($curr_page == 'register' || $curr_page == 'login'){
     ?>
 
-    <nav class="bg-light">
-        <h3>EVENT MANAGEMENT SYSTEM</h3>
+    <nav class="bg-light text-center">
+        <h3>PLANA</h3>
     </nav>
 
     <?php
         } else{
-    ?>
+            if(is_user_logged_in()){
+                // $user = wp_get_current_user();
+                // $fullname = $_GET['fullname'];
 
-    <!-- navwalker -->
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="<?php esc_attr_e('Toggle navigation', 'your-theme-slug'); ?>">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <a class="navbar-brand" href="http://localhost/eventmanagementsystem/">EVENT MANAGEMENT SYSTEM</a>
-            <?php
-            wp_nav_menu(
-                array(
-                    'theme_location' => 'primary',
-                    'depth' => 2,
-                    'container' => 'div',
-                    'container_class' => 'collapse navbar-collapse',
-                    'container_id' => 'bs-example-navbar-collapse-1',
-                    'menu_class' => 'nav navbar-nav',
-                    'fallback_cb' => 'WP_Bootstrap_Navwalker::fallback',
-                    'walker' => new WP_Bootstrap_Navwalker(),
-                )
-            );
-            ?>
+                // global $wpdb;
+            }
+    ?>
+<nav class="main-nav">
+    <div class="plana-navbar">
+        <h1>Plana</h1>
+    </div>
+    <div class="d-flex flex-row justify-content-around align-items-center gap-3">
+        <div class="my-account">
+            <ion-icon name="person-outline"></ion-icon>
+            <a href="eventmanagementsystem/account">My Account</a>
         </div>
-    </nav>
-    
-    <?php } ?>
+        <div class="signout">
+        <?php if(is_user_logged_in()){
+            echo '<a href="">Sign Out</a>';
+        
+        }else{
+            echo '<a href="">Sign In</a>';
+        } ?>
+        <?php ?>
+        </div>
+    </div>
+</nav>
+
+<?php } ?>
