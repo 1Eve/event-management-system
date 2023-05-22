@@ -148,3 +148,27 @@
     color: #888;
   }
   /* More Events */
+
+
+
+  /* Header */
+
+  .main-nav{
+    background-color: black;
+    color: #fff;
+   display: flex;
+   justify-content: space-between;
+   padding: 5px 15px;
+   align-items: center;
+  }
+
+  .main-nav a{
+    color: #fff;
+    text-decoration: none;
+
+  }
+  .main-nav a:hover{
+    cursor: pointer;
+    color: #fff;
+    border-bottom: 1px solid #fff;
+  }

@@ -48,3 +48,24 @@ add_action('init', 'eventtheme_setup');
  
  global $errormessage;
  $errormessage;
+
+ function get_current_user_details()
+{
+    $current_user = [];
+    $user = wp_get_current_user();
+    $current_user['email'] = $user->user_email;
+    $id = $user->ID;
+    $current_user['id'] = $user->ID;
+
+    if (!current_user_can('manage_options')) {
+        $user_meta = get_user_meta($id);
+        $fullname = $user_meta['fullname'][0];
+        $current_user['fullname'] = $fullname;
+
+        $current_user['phonenumber'] = $user_meta['phonenumber'][0];
+    } else {
+        $current_user['fullname'] = 'Admin';
+        $current_user['phonenumber'] = 'N/A';
+    }
+    return $current_user;
+}
