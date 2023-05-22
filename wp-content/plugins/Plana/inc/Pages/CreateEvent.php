@@ -26,6 +26,7 @@ class CreateEvent
             event_id int(10) NOT NULL AUTO_INCREMENT,
             event_name text NOT NULL,
             event_poster text NOT NULL,  
+            event_category text NOT NULL,
             event_date date NOT NULL,         
             event_time text NOT NULL,
             event_location text NOT NULL,
@@ -49,6 +50,7 @@ class CreateEvent
             $data = [
                 'event_name' => $_POST['event_name'],
                 'event_poster' => $_POST['event_poster'],
+                'event_category' => $_POST['event_category'],
                 'event_date' => $_POST['event_date'],
                 'event_time' => $_POST['event_time'],
                 'event_location' => $_POST['event_location'],
@@ -67,10 +69,11 @@ class CreateEvent
         
         $table_name = $wpdb->prefix . 'events';
 
-        if (isset($_POST['update'])) {
+        if (isset($_POST['updatebtn'])) {
             $data = [
                 'event_name' => $_POST['edt_event_name'],
                 'event_poster' => $_POST['edt_event_poster'],
+                'event_category' => $_POST['edt_event_category'],
                 'event_date' => $_POST['edt_event_date'],
                 'event_time' => $_POST['edt_event_time'],
                 'event_location' => $_POST['edt_event_location'],

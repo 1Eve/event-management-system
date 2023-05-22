@@ -1,4 +1,4 @@
-<!-- <?php
+<?php
 
 /**
  * Template Name: Login Template
@@ -6,31 +6,31 @@
  ?>
 
  <?php
-    // $err = '';
+    $err = '';
 
-    // if(isset($_POST['loginbtn'])){
-    //     $email = $_POST['email'];
-    //     $password = $_POST['password'];
+    if(isset($_POST['loginbtn'])){
+        $email = $_POST['email'];
+        $password = $_POST['password'];
 
-    //     $user = wp_signon([
-    //         'user_login' => $email,
-    //         'user_pass' => $password
-    //     ]);
+        $user = wp_signon([
+            'user_login' => $email,
+            'user_pass' => $password
+        ]);
 
-    //     if(!is_wp_error($user)){
-    //         wp_set_current_user($user->ID);
-    //         wp_set_auth_cookie($user->ID);
-    //         do_action('wp_login', $user->user_login, $user);
+        if(!is_wp_error($user)){
+            wp_set_current_user($user->ID);
+            wp_set_auth_cookie($user->ID);
+            do_action('wp_login', $user->user_login, $user);
         
-    //         wp_redirect(home_url());
-    //         exit;
-    //     } else {
-    //         $err = "Invalid email or password";
-    //     }
-    // }
+            wp_redirect(home_url());
+            exit;
+        } else {
+            $err = "Invalid email or password";
+        }
+    }
  ?>
  <?php
-//  get_header();
+ get_header();
  ?>
 
  <div class="bg-wwhite">
@@ -59,4 +59,4 @@
             </div>
         </form>
     </div>
- </div> -->
+ </div>

@@ -72,7 +72,7 @@ class AdminPage extends BaseController
                 'capability' => 'manage_options',
                 'menu_slug' => 'view_events',
                 'callback' => [$this->callbacks, 'viewEvents'],
-            ]
+            ],
         ];
     }
 
