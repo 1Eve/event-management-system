@@ -16,16 +16,17 @@ class SettingsApi{
     public $sections = array();
     
     public function register(){
-
+        $this->createorganizer();
         if(!empty($this->admin_pages)){
             add_action('admin_menu', [$this, 'addAdminMenu']);
+            
         }
-
+        
     }
 
     public function AddPages(array $pages){
         $this->admin_pages = $pages;
-
+        
         return $this;
     }
 
@@ -84,9 +85,26 @@ class SettingsApi{
             );
         }
     }
+    function createorganizer(){
+        add_role(
+            'Organizer',
+            'Organizer',
+            [
+                'read'=> true,
+                'edit_posts'=>true,
+                'edit_pages'=>true,
+                'upload_files'=> true,
+                'delete_posts'=>true,
+                'edit_published_posts'=> true,
+                'delete_published_pages'=>true,
+                'delete_published_posts'=>true
+            ]
+        );
+    }
 
     public function setSettings(array $settings){
         $this->settings = $settings;
+        
 
         return $this;
     }

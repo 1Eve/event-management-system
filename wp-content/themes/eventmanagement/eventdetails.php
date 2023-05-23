@@ -4,15 +4,35 @@
  * Template Name: Event Details
  */
 ?>
+<?php 
+
+global $wpdb;
+
+$event_id = $_GET['event_id'];
+var_dump($event_id);
+
+$table = $wpdb->prefix . 'events';
+
+
+
+$data = $wpdb->get_results("SELECT * FROM $table WHERE event_id = '$event_id' ");
+
+$event = $data[0];
+var_dump($event);
+echo '<br>';
+var_dump($data);
+
+?>
 
 <section class="container-description" id="container-description">
     <div class="event-description">
         <div class="event-img">
+        <img src="<?php echo $event->event_poster; ?>" alt="">
         </div>
         <div class="event-info">
             <h5>Event Info</h5>
             <hr>
-            <h4>MIGUEL PALEY LIVE IN CONCERT</h4>
+            <h4><?php echo $event->event_name; ?></h4>
             <p class="host">Hosted by PATRICK MWANIKI</p>
             <p>Put on your dancing shoes and join us for a memorable evening with Miguel Paley. Sample some Danish
                 hotdogs and ex-Yugoslavian BBQ, and enjoy a glass of wine at the firepit.</p>
