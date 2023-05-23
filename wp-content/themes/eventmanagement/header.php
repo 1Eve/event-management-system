@@ -22,43 +22,73 @@ endif;
 
 <body <?php body_class($custom_classes); ?>>
 
-    <?php
-    $curr_page = basename(get_permalink());
+<?php
+if (is_front_page()) :
+    $custom_classes = ['event-home-class', 'my-class-event'];
+else :
+    $custom_classes = ['other-event-class', 'event-other-class'];
+endif;
+?>
 
-    if ($curr_page == 'register' || $curr_page == 'login') {
+<body <?php body_class($custom_classes); ?>>
+
+<?php
+$curr_page = basename(get_permalink());
+
+if ($curr_page == 'register' || $curr_page == 'login') :
     ?>
 
-        <nav class="bg-light text-center">
-            <h3>PLANA</h3>
-        </nav>
+    <nav class="bg-light text-center">
+        <h3>PLANA</h3>
+    </nav>
 
-    <?php
-    } else {
-        if (is_user_logged_in()) {
-            // $user = wp_get_current_user();
-            // $fullname = $_GET['fullname'];
+<?php else :
+    $fullname = ''; // Initialize $fullname with an empty string
+    $is_admin = false; // Initialize $is_admin with false
 
-            // global $wpdb;
+    if (is_user_logged_in()) :
+        $user = wp_get_current_user();
+        $is_admin = current_user_can('manage_options');
+        $fullname = $user->display_name;
+
+        global $wpdb;
+        $table = $wpdb->prefix . 'userinfo';
+        $email = $user->user_email;
+
+        if (!$is_admin) {
+            $useremail = str_replace('"', '', $email);
+            $useremail[0] = '*';
+            $useremail[-1] = '*';
+            $useremail = str_replace('*', '', $useremail);
+
+            $user = $wpdb->get_row($wpdb->prepare("SELECT * FROM $table WHERE email = '$useremail'"));
         }
+    endif;
     ?>
-        <nav class="main-nav">
-            <div class="plana-navbar">
+
+    <nav class="main-nav">
+        <div class="plana-navbar">
             <a class="display-6" href="/eventmanagementsystem/">Plana</a>
+        </div>
+        <div class="d-flex flex-row justify-content-around align-items-center gap-3">
+            <div class="my-account">
+                <ion-icon name="person-outline"></ion-icon>
+                <a href="eventmanagementsystem/account/"><?php echo $fullname; ?>'s Account</a>
             </div>
-            <div class="d-flex flex-row justify-content-around align-items-center gap-3">
-                <div class="my-account">
-                    <ion-icon name="person-outline"></ion-icon>
-                    <a href="eventmanagementsystem/account/">My Account</a>
-                </div>
-                <div class="signout">
-                    <?php if ($_COOKIE['currentuser']) {
+            <div class="signout">
+                <?php
+                if ($is_admin) {
+                    echo '<a href="eventmanagementsystem/logout">Sign Out</a>';
+                } else {
+                    if (isset($_COOKIE['currentuser']) && $_COOKIE['currentuser']) {
                         echo '<a href="eventmanagementsystem/login">Sign Out</a>';
                     } else {
                         echo '<a href="eventmanagementsystem/login">Sign In</a>';
-                    } ?>
-                    <?php ?>
-                </div>
+                    }
+                }
+                ?>
             </div>
-        </nav>
+        </div>
+    </nav>
 
-    <?php } ?>
+<?php endif; ?>
