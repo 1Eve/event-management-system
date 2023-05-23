@@ -24,9 +24,13 @@ $carousel3 = json_decode(json_encode($trips), true);
     <div id="carouselExampleAutoplaying" class="carousel slide mb-3 "
         style="width:100%;height:28rem;box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;"
         data-bs-ride="carousel">
-        <div class="carousel-inner h-100" >
+        <div class="carousel-inner h-100">
             <div class="carousel-item active">
                 <img src="<?php echo $carousel[0]['event_poster']; ?>" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5><?php echo $carousel[0]['event_name']; ?></h5>
+                    <p>Some representative placeholder content for the first slide.</p>
+                </div>
             </div>
             <div class="carousel-item">
                 <img src="<?php echo $carousel1[1]['event_poster']; ?>" class="d-block w-100" alt="...">
@@ -83,7 +87,7 @@ $carousel3 = json_decode(json_encode($trips), true);
                 <?php
                 for ($i = 0; $i < min(count($carousel), 4); $i++) {
                     $music = $carousel[$i];
-                  
+
                     ?>
 
                     <form action="eventmanagementsystem/event-details/" method="get">

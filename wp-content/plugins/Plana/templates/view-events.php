@@ -7,18 +7,21 @@ $table_name = $wpdb->prefix . 'events';
 
 $data = $wpdb->get_results("SELECT * FROM $table_name ");
 
+// $bought = 
+
 if ($data) {
-  echo '<table class="table table-striped" style="margin: 0 auto; width: 40vw;  border-collapse: collapse;color: black; margin-top: 20px; border-shadow: 2px 2px 2px grey;">';
+  echo '<table class="table table-striped" style=" width: 85vw;  border-collapse: collapse;color: black; margin-top: 20px; border-shadow: 2px 2px 2px grey;">';
   echo '<thead>
             <tr>
-              <th style="border: 1px solid black; padding: 10px;">Event Id</th>
+            
               <th style="border: 1px solid black; padding: 10px;">Event Name</th>
-              <th style="border: 1px solid black; padding: 10px;">Event Poster</th>
-              <th style="border: 1px solid black; padding: 10px;">Event Category</th>
+              
               <th style="border: 1px solid black; padding: 10px;">Event Date</th>
               <th style="border: 1px solid black; padding: 10px;">Event Time</th>
               <th style="border: 1px solid black; padding: 10px;">Evet Location</th>
               <th style="border: 1px solid black; padding: 10px;">Event Description</th>
+              <th style="border: 1px solid black; padding: 10px;">Total Tickets</th>
+              <th style="border: 1px solid black; padding: 10px;">Bought Tickets</th>
               <th style="border: 1px solid black; padding: 10px;">Organizer Info</th>
               <th style="border: 1px solid black; padding: 10px;">Action</th>
             </tr>
@@ -28,18 +31,18 @@ if ($data) {
 
   foreach ($data as $result) { ?>
     <tr>
-      <td style="border: 1px solid black; padding: 10px;">
-        <?php echo $result->event_id ?>
-      </td>
+      <!-- <td style="border: 1px solid black; padding: 10px;">
+        <?php //echo $result->event_id ?>
+      </td> -->
       <td style="border: 1px solid black; padding: 10px;">
         <?php echo $result->event_name ?>
       </td>
-      <td style="border: 1px solid black; padding: 10px;">
-        <img src="<?php echo $result->event_poster ?>" style="width:10vw;height:20vh;">
+      <!-- <td style="border: 1px solid black; padding: 10px;">
+        <img src="<?php //echo $result->event_poster ?>" style="width:10vw;height:20vh;">
       </td>
       <td style="border: 1px solid black; padding: 10px;">
-        <?php echo $result->event_category ?>
-      </td>
+        <?php //echo $result->event_category ?>
+      </td> -->
       <td style="border: 1px solid black; padding: 10px;">
         <?php echo $result->event_date ?>
       </td>
@@ -51,6 +54,12 @@ if ($data) {
       </td>
       <td style="border: 1px solid black; padding: 10px;">
         <?php echo $result->event_desc ?>
+        <td style="border: 1px solid black; padding: 10px;">
+        <?php echo $result->event_tickets ?>
+      </td> 
+      <td style="border: 1px solid black; padding: 10px;">
+        <?php echo $result->bought_tickets?>
+      </td> 
       </td>
       <td style="border: 1px solid black; padding: 10px;">
         <?php echo $result->organizer_info ?>

@@ -31,6 +31,8 @@ class CreateEvent
             event_time text NOT NULL,
             event_location text NOT NULL,
             event_desc text NOT NULL,
+            event_tickets int(255) NOT NULL,
+            bought_tickets int(255) NOT NULL,
             organizer_info text NOT NULL,
             PRIMARY KEY(event_id)   
         );";
@@ -55,6 +57,7 @@ class CreateEvent
                 'event_time' => $_POST['event_time'],
                 'event_location' => $_POST['event_location'],
                 'event_desc' => $_POST['event_desc'],
+                'event_tickets' => $_POST['event_tickets'],
                 'organizer_info' => $_POST['organizer_info'],
             ];
 
@@ -77,7 +80,8 @@ class CreateEvent
                 'event_date' => $_POST['edt_event_date'],
                 'event_time' => $_POST['edt_event_time'],
                 'event_location' => $_POST['edt_event_location'],
-                'event_desc' => $_POST['edt_desc_task'],
+                'event_desc' => $_POST['edt_event_desc'],
+                'event_tickets' => $_POST['edt_event_tickets'],
                 'organizer_info' => $_POST['edt_organizer_info'],
             ];
 
