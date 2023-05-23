@@ -12,6 +12,8 @@ class CreateEvent
         $this->create_table_to_db();
         $this->add_event_to_db();
         $this->update_event_to_db();
+        $this->update_bought_tickets();
+
     
     }
 
@@ -90,4 +92,21 @@ class CreateEvent
 
         }
     }
+    function update_bought_tickets()
+    {
+        global $wpdb;
+        
+        $table_name = $wpdb->prefix . 'events';
+
+        if (isset($_POST['BookNow'])) {
+            $data = [
+                'bought_tickets' => $_POST['bought_tickets'] 
+            ];
+
+            $event_id = $_GET['event_id'];
+            $result = $wpdb->update($table_name, $data, array('event_id' => "$event_id"));
+
+        }
+    }
+
 }
