@@ -4,35 +4,36 @@
  * Template Name: Event Details
  */
 ?>
-<?php 
+<?php
 
 global $wpdb;
 
 $event_id = $_GET['event_id'];
-var_dump($event_id);
-
 $table = $wpdb->prefix . 'events';
 
-
-
 $data = $wpdb->get_results("SELECT * FROM $table WHERE event_id = '$event_id' ");
+$bought_tickets = $wpdb->get_results("SELECT * FROM $table WHERE event_id = '$event_id' ");
 
 $event = $data[0];
-var_dump($event);
-echo '<br>';
-var_dump($data);
 
 ?>
 
 <section class="container-description" id="container-description">
     <div class="event-description">
-        <div class="event-img">
-        <img src="<?php echo $event->event_poster; ?>" alt="">
+        <div class="event-img" style="
+    background-image: url(<?php echo $event->event_poster; ?>);
+    max-width: 100%;
+    height: auto; background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center 
+">
         </div>
         <div class="event-info">
             <h5>Event Info</h5>
             <hr>
-            <h4><?php echo $event->event_name; ?></h4>
+            <h4>
+                <?php echo $event->event_name; ?>
+            </h4>
             <p class="host">Hosted by PATRICK MWANIKI</p>
             <p>Put on your dancing shoes and join us for a memorable evening with Miguel Paley. Sample some Danish
                 hotdogs and ex-Yugoslavian BBQ, and enjoy a glass of wine at the firepit.</p>
@@ -44,9 +45,10 @@ var_dump($data);
                 <ion-icon class="icon" name="location-outline"></ion-icon>
                 <p><a href="https://www.bomasofkenya.co.ke/">Bomas of Kenya</a>, Nairobi</p>
             </div>
-            <div class="TicketButton">    
-                <button class="BookTicket" name="BookTicket" id="BookTicket">Book Your Ticket Now<i class="icon bi bi-box-arrow-up-right"></i></button>
-                
+            <div class="TicketButton">
+                <button class="BookTicket" name="BookTicket" id="BookTicket">Book Your Ticket Now<i
+                        class="icon bi bi-box-arrow-up-right"></i></button>
+
             </div>
         </div>
     </div>
@@ -64,7 +66,9 @@ var_dump($data);
                         <h6>REGULAR TICKETS</h6>
                         <h6>VIP TICKETS</h6>
                         <h6>VVIP TICKETS</h6>
-                        <h6>TOTAL TICKETS</h6>
+                        <h6>TOTAL AMOUNT</h6>
+                        <h6 class="showtickets"></h6>
+                      
                     </div>
                     <div>
                         <div class="tickets">
@@ -98,18 +102,37 @@ var_dump($data);
                                     <button class="add-btn" onclick="addVvipTicket()">+</button>
                                 </div>
                             </div>
-
+                            
                             <div class="amounts-section">
-                                <span>Total Tickets:</span>
                                 <span id="total-ticket-amount">0</span>
                             </div>
-
                         </div>
-
                     </div>
                 </div>
-
             </div>
+        </div>
+        <div class="booknow">
+            <span> <h6>Total Tickets:</h6></span>
+            <?php if(is_user_logged_in()){
+            ?>
+
+<form action="" method="post">
+    <input type="hidden" class="hiddentickets" name="bought_tickets" value="<?php echo $event->bought_tickets ? $event->bought_tickets:0; ?>">
+    <input type="submit" class="BookNow" name="BookNow" id="BookNow" value="Book Now">
+
+</form>
+            <?php
+            } else {?>
+<a href="">
+
+<input type="submit" name="BookNow" id="BookNow" value="Login">
+
+</a>
+                
+           <?php }
+            
+            
+            ?>
         </div>
     </section>
     <div class="more-events">
@@ -117,9 +140,13 @@ var_dump($data);
     </div>
 </section>
 <script>
+
     let regularTicketCount = 0;
     let vipTicketCount = 0;
     let vvipTicketCount = 0;
+    let numberoftickets = Number(document.querySelector('.hiddentickets').value);
+
+    
 
     function addRegularTicket() {
         regularTicketCount++;
@@ -172,7 +199,13 @@ var_dump($data);
 
         const vvipTicketCountElement = document.querySelector('.vvip-ticket-count');
         vvipTicketCountElement.textContent = vvipTicketCount;
+
+        let totaltickets= vvipTicketCount+vipTicketCount+regularTicketCount+numberoftickets;
+        document.querySelector('.BookNow').innerHTML=totaltickets;
+        document.querySelector('.hiddentickets').value = totaltickets;
+        console.log(totaltickets);
     }
+    updateTicketCount();
 
     function updateTotalAmount() {
         const regularTicketPrice = 2500;
@@ -189,31 +222,31 @@ var_dump($data);
     }
 
     // Book Ticket Button
-    let btn = document.getElementById('BookTicket')
-    let popup = document.getElementById('popup')
+    let btn = document.getElementById('BookTicket');
+    let popup = document.getElementById('popup');
     let span = document.getElementsByClassName('close')[0];
     let body = document.getElementById('container-description');
-
-    // When the user clicks on the button, open the modal
 
     btn.onclick = function () {
         popup.style.display = 'block';
     };
-    // When the user clicks on <span> (x), close the modal
+
     span.onclick = function () {
         popup.style.display = 'none';
     };
 
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
-        if (event.target == popup) {
-            popup.style.display = 'none';
-        }
-    };
+    // Calculate total tickets bought
+    function calculateTotalTickets() {
+        const totalTickets = regularTicketCount + vipTicketCount + vvipTicketCount;
+        return totalTickets;
+    }
 
-
-
-
+    let bookNowBtn = document.getElementById('BookNow');
+    bookNowBtn.addEventListener('click', function () {
+        const totalTicketsBought = calculateTotalTickets();
+        console.log('Total tickets bought:', totalTicketsBought);
+    });
 
 </script>
+
 <?php get_footer(); ?>

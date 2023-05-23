@@ -14,22 +14,12 @@
 
 .event-description {
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-gap: 10px;
+    grid-template-columns: 1fr 1fr;
     height: 100vh;
 
 }
 
-.event-img {
-    height: 100%;
-    /* background-image: url(); */
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-}
-
-.event-info {
-    padding-left: 20px;
-}
 
 .event-location,
 .event-date {
@@ -55,7 +45,7 @@
     width: 300px;
     text-align: center;
 
-    
+
 }
 
 .BookTicket {
@@ -64,8 +54,8 @@
     position: relative;
     padding-right: 40px;
     border: none;
-    /* font-size: 1.1em; */
 }
+
 .BookTicket .icon {
     position: absolute;
     top: 50%;
@@ -75,9 +65,7 @@
 
 /* Pricing */
 .section-pricing {
-    /* display: flex;
-    justify-content: center; */
-    display: none;
+    /* display: none; */
     position: fixed;
     top: 50%;
     left: 50%;
@@ -91,10 +79,6 @@
 .section-pricing>div {
     width: 800px;
 }
-
-.hidden {}
-
-#popup {}
 
 /* close button */
 .close {
@@ -118,21 +102,23 @@
     display: grid;
     grid-template-columns: 20% 80%;
 }
-
+.subtract-btn,.add-btn{
+    margin: 0 5px;
+}
 .pricing-header {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
-
-.pricing-header h6 {
-    /* margin-bottom: 1rem; */
+.amounts-section span{
+    margin-left: 20px;
+    width: 91%;
+    display: flex;
+    justify-content: flex-end;
 }
-
 .tickets div {
     display: flex;
     justify-content: space-between;
-    background-color: wheat;
 }
 
 /* Ticket counter */
@@ -171,78 +157,90 @@
     z-index: 9999;
     background-color: #fff;
     padding: 20px;
+    /* display: none; */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  }
+}
 
-  /* Pop Up */
-  
-  .hidden {
-    display: none;
-  }
-  
-  #close-btn {
+/* Pop Up */
+
+#close-btn {
     position: absolute;
     top: 10px;
     right: 10px;
     cursor: pointer;
     font-size: 24px;
     color: #888;
-  }
-  /* More Events */
+}
+
+/* Book Now */
+.booknow {
+    display: flex;
+   justify-content: space-between;
+    margin-top: 1em;
+}
+
+/* More Events */
 
 
-  /* Header */
+/* Header */
 
-  .main-nav{
+.main-nav {
     background-color: black;
     color: #fff;
-   display: flex;
-   justify-content: space-between;
-   padding: 5px 15px;
-   align-items: center;
-  }
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 15px;
+    align-items: center;
+}
 
-  .main-nav a{
+.main-nav a {
     color: #fff;
     text-decoration: none;
 
-  }
-  .main-nav a:hover{
+}
+
+.main-nav a:hover {
     cursor: pointer;
     color: #fff;
     border-bottom: 1px solid #fff;
-  }
+}
 
 
 /* Footer */
-footer{
+footer {
     display: flex;
     flex-direction: column;
 
-    background-color:rgb(13, 4, 52);
+    background-color: rgb(13, 4, 52);
 }
-.footer{
+
+.footer {
     color: #F5F2F8;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-gap: 10px;
-    
+
 }
-.footer a{
+
+.footer a {
     text-decoration: none;
     cursor: pointer;
     color: #F5F2F8;
 }
-.footer a:hover{
+
+.footer a:hover {
     color: #fff;
 }
-.footer>div{
+
+.footer>div {
     padding: 10px 10px 0 10px;
 }
-.copyright{
+
+.copyright {
     color: #F5F2F8;
     text-align: center;
 }
-hr{
+
+hr {
     color: #382B7F;
 }
