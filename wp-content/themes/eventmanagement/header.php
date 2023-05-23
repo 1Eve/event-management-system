@@ -43,7 +43,7 @@ endif;
     ?>
         <nav class="main-nav">
             <div class="plana-navbar">
-                <h1>Plana</h1>
+            <a class="display-6" href="/eventmanagementsystem/">Plana</a>
             </div>
             <div class="d-flex flex-row justify-content-around align-items-center gap-3">
                 <div class="my-account">
