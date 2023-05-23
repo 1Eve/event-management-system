@@ -67,11 +67,11 @@
                 <label for="password" class="mb-1">Password</label>
                 <input type="password" class="form-control" name="password" placeholder="Password" required>
             </div>
-            <div class="d-flex justify-content-center align-items-center">
-                <button class="btn btn-primary" name="register" type="submit">Register</button>
+            <div class="d-flex justify-content-center align-items-center mt-3">
+                <button class="btn btn-lg text-white cursor-pointer" style="background-color: #7070E9;" name="register" type="submit">Register</button>
             </div>
             <div class="text-center mt-1">
-                <p>Already have an account? <a href="/eventmanagementsystem/login">Login</a></p>
+                <p>Already have an account? <a class="text-decoration-none" style="color: #7070E9;" href="/eventmanagementsystem/login">Login</a></p>
             </div>
         </form>
     </div>

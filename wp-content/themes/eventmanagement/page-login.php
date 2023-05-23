@@ -78,10 +78,10 @@ if(isset($_POST['loginbtn'])){
                 </div>
             </div>
             <div class="d-flex justify-content-center align-items-center">
-                <button class="btn btn-primary" name="loginbtn" type="submit">Login</button>
+                <button class="btn text-white cursor-pointer" style="background-color: #7070E9;" name="loginbtn" type="submit">Login</button>
             </div>
             <div class="text-center mt-1">
-                <p>Don't have an account? <a href="/eventmanagementsystem/register">Register</a></p>  
+                <p>Don't have an account? <a class="text-decoration-none" style="color: #7070E9;" href="/eventmanagementsystem/register">Register</a></p>  
             </div>
         </form>
     </div>
