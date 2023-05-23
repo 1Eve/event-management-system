@@ -19,7 +19,7 @@ $data = $data[0];
         <h1 style="text-align:center;">Edit An Event</h1>
         <div>
             <label>Event Name:</label><br>
-            <input type="text" style="width:100%;" placeholder="Enter event name" value="<?php echo $data->event_name; ?>"  >
+            <input type="text" style="width:100%;" placeholder="Enter event name" name="edt_event_name" value="<?php echo $data->event_name; ?>"  >
         </div>
 
         <div>
@@ -51,10 +51,14 @@ $data = $data[0];
             <input type="text" style="width:100%;" placeholder="Enter event location" value="<?php echo $data->event_location; ?>"  name="edt_event_location" required>
         </div>
 
-        <div class="form-outline">
+        <div >
             <label>Event Description:</label><br>
-            <textarea class="form-control" rows="4" type="text" style="width:100%;" value="<?php echo $data->event_description; ?>"  placeholder="Enter event details"
+            <textarea class="form-control" rows="4" type="text" style="width:100%;" value="<?php echo $data->event_desc; ?>"  placeholder="Enter event details"
                 name="edt_event_desc" required></textarea>
+        </div>
+        <div >
+            <label>Total Tickets:</label><br>
+            <input type="text" style="width:100%;" placeholder="Enter event location" value="<?php echo $data->event_tickets; ?>"  name="edt_event_tickets" required>
         </div>
 
         <div>

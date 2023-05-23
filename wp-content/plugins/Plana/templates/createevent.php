@@ -46,6 +46,11 @@
         </div>
 
         <div>
+            <label>Total Tickets:</label><br>
+            <input type="number" style="width:100%;" placeholder="Enter event location" name="event_tickets" required>
+        </div>
+
+        <div>
             <label>Organizer Information </label><br>
             <input type="text" style="width:100%;" placeholder="Enter event organizer's information"
                 name="organizer_info" required><br>
