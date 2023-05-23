@@ -24,6 +24,7 @@ if (!empty($email)) {
 
     if (current_user_can('manage_options')) {
         $admin_user = $wpdb->get_row("SELECT * FROM $admin_table WHERE ID = $user->ID");
+        // $admin_user = get_current_user_details();
     }
 }
 ?>
@@ -37,8 +38,8 @@ if (!empty($email)) {
             <hr class="opacity-25">
             <div class="d-flex flex-column">
                 <div class="d-flex justify-content-end pe-5 align-items-center gap-1">
-                    <ion-icon name="pencil" class="text-primary"></ion-icon>
-                    <a href="eventmanagementsystem/account-update/" class="link-primary text-decoration-none cursor-pointer">Edit</a>
+                    <ion-icon name="pencil" style="color: #7070E9"></ion-icon>
+                    <a href="eventmanagementsystem/account-update/" class="text-decoration-none cursor-pointer" style="color: #7070E9">Edit</a>
                 </div>
                 <div class="d-flex flex-row gap-5 align-items-center justify-content-start ps-3">
                     <div class="fw-bold text-start">

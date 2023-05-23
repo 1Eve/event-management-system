@@ -38,8 +38,8 @@ $curr_page = basename(get_permalink());
 if ($curr_page == 'register' || $curr_page == 'login') :
     ?>
 
-    <nav class="bg-light text-center">
-        <h3>PLANA</h3>
+    <nav class="reg-title text-center pt-2 pb-2" style="background-color: #0C0434;">
+    <a class="display-6" href="/eventmanagementsystem/" style="text-decoration: none; color: white">PLANA</a>
     </nav>
 
 <?php else :
