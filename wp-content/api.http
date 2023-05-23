@@ -1,0 +1,18 @@
+### Converting plana website to json format
+GET http://localhost/eventmanagementsystem/wp-json
+
+### fetching eliminationg some information
+GET http://localhost/eventmanagementsystem/wp-json/wp/v2
+
+### fetching posts
+GET http://localhost/eventmanagementsystem/wp-json/wp/v2/posts
+
+### fetching a single post
+GET http://localhost/eventmanagementsystem/wp-json/wp/v2/posts/10
+
+### fetching users
+GET http://localhost/eventmanagementsystem/wp-json/wp/v2/users
+
+### fetching a user
+GET http://localhost/eventmanagementsystem/wp-json/wp/v2/users/1
+
