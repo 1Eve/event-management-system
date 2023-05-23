@@ -1,17 +1,30 @@
 <?php
-
 /**
  * Template Name: Account Template
  */
-if (!is_user_logged_in()) {
-    wp_redirect(site_url('/login'));
-    exit();
-}
-?>
-<?php get_header(); ?>
 
-<?php
-$user = get_current_user_details();
+// if (!is_user_logged_in()) {
+//     wp_redirect(site_url('/login'));
+//     exit();
+// }
+
+get_header();
+
+global $wpdb;
+$email = $_COOKIE['currentuser'];
+$table = $wpdb->prefix . 'userinfo';
+
+// $current_user = wp_get_current_user();
+// echo($email);
+$useremail = str_replace('"','',$email);
+$useremail[0]='*';
+$useremail[-1]='*';
+$useremail = str_replace('*','',$useremail);
+// echo '<br/>';
+// ECHO($useremail);
+$user = $wpdb->get_row($wpdb->prepare("SELECT * FROM $table WHERE email = '$useremail'"));
+
+// var_dump("SELECT * FROM $table WHERE email = '$email'");
 ?>
 
 <div class="container-fluid bg-light pt-5 pb-5">
@@ -24,7 +37,7 @@ $user = get_current_user_details();
             <div class="d-flex flex-column">
                 <div class="d-flex justify-content-end pe-5 align-items-center gap-1">
                     <ion-icon name="pencil" class="text-primary"></ion-icon>
-                    <a href="http://localhost/eventmanagementsystem/account-update/" class="link-primary text-decoration-none cursor-pointer">Edit</a>
+                    <a href="eventmanagementsystem/account-update/" class="link-primary text-decoration-none cursor-pointer">Edit</a>
                 </div>
                 <div class="d-flex flex-row gap-5 align-items-center justify-content-start ps-3">
                     <div class="fw-bold text-start">
@@ -32,13 +45,15 @@ $user = get_current_user_details();
                             <li>Name:</li>
                             <li>Email:</li>
                             <li>Phone:</li>
+                            <li>Password:</li>
                         </ul>
                     </div>
                     <div class="text-start">
                         <ul class="list-unstyled">
-                            <li><?php echo $user['fullname']; ?></li>
-                            <li><?php echo $user['email']; ?></li>
-                            <li><?php echo $user['phonenumber']; ?></li>
+                            <li><?php echo $user->fullname; ?></li>
+                            <li><?php echo $user->email; ?></li>
+                            <li><?php echo $user->phonenumber; ?></li>
+                            <li><?php echo $user->password; ?></li>
                         </ul>
                     </div>
                 </div>
@@ -46,7 +61,5 @@ $user = get_current_user_details();
         </div>
     </div>
 </div>
-
-
 
 <?php get_footer(); ?>

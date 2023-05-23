@@ -4,39 +4,59 @@
  * Template Name: Login Template
  */
 
- // Check if user is already logged in
-// if (is_user_logged_in()) {
-//     wp_redirect(home_url()); // Redirect to home page
-//     exit();
-// }
- ?>
+require_once('wp-load.php');
 
- <?php
-    $err = '';
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
-    if(isset($_POST['loginbtn'])){
-        $email = $_POST['email'];
-        $password = $_POST['password'];
 
-    //     $user = wp_signon([
-    //         'user_login' => $email,
-    //         'user_pass' => $password
-    //     ]);
+// echo "Login Page";
+if(isset($_POST['loginbtn'])){
+        if(isset($_POST['email']) && isset($_POST['password'])){
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            
+            // var_dump($email, $password);
+            global $wpdb;
+            
+            $table = $wpdb->prefix . 'userinfo';
+            
+            $current_user = $wpdb->get_row("SELECT * FROM $table WHERE email = '$email' AND password = '$password'");
+            echo '<pre>';
+            // var_dump($current_user->email);
+            echo '</pre>';
+            
+            // $email_result = $wpdb->get_row("SELECT email from {$wpdb->prefix}userinfo WHERE email = '$email'");
+            // $pwd_result = $wpdb->get_row("SELECT `password` from {$wpdb->prefix}userinfo WHERE email = '$email'");
 
-        if(!is_wp_error($user)){
-            wp_set_current_user($user->ID);
-            wp_set_auth_cookie($user->ID);
-            do_action('wp_login', $user->user_login, $user);
-        
-            wp_redirect(home_url());
-            exit;
+            if($current_user){
+                // if($password == $pwd_result->password){
+                    // $current_user = $email_result->email;
+                    
+                    setcookie("currentuser", json_encode($current_user->email), time()+3600, "/eventmanagementsystem/", "", 0);
+
+
+                    wp_redirect('/eventmanagementsystem/');
+
+                // } else {
+                //     echo '<script>alert("Invalid email or password")</script>';
+                // }
+            } else {
+                echo '<script>alert("User not found")</script>';
+            }
+    
         } else {
-            $err = "Invalid email or password";
+            $err = "Please enter your email and password";
         }
     }
  ?>
+
+<?php if (!empty($err)): ?>
+    <div class="alert alert-danger"><?php echo esc_html($err); ?></div>
+<?php endif; ?>
+
  <?php
-//  get_header();
+  get_header();
  ?>
 
  <div class="bg-white">
@@ -44,10 +64,6 @@
         <div class="text-center mb-3">
             <h3>Login</h3>
         </div>
-        <?php if (!empty($err)) : ?>
-            <p class="error"><?php echo $err; ?></p>
-        <?php endif; ?>
-
         <form action="" method="post">
             <div class="form-group row mb-4">
                 <label for="email" class="col-sm-2 col-form-label">Email</label>

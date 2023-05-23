@@ -1,10 +1,3 @@
- <?php 
-if (is_user_logged_in()){
-    wp_redirect(home_url());
-    exit;
- } 
- ?>
-
 <?php
 /**
  * Template Name: Register Template
@@ -13,40 +6,38 @@ if (is_user_logged_in()){
 ?>
 
 <?php
-    if (isset($_POST['register'])){
-        $fullname = $_POST['fullname'];
-        $email = $_POST['email'];
-        $phonenumber = $_POST['phonenumber'];
-        $password = $_POST['password'];
-    
-        $user_id = wp_create_user($email, $password, $email);
-    
-//         if (!is_wp_error($user_id)){
-//             // wp_update_user(array(
-//             //     'ID' => $user_id,
-//             //     'first_name' => $fullname,
-//             //     'nickname' => $fullname
-//             // ));
-//             update_user_meta($user_id, 'fullname', $fullname);
-//             update_user_meta($user_id, 'email', $email);
-//             update_user_meta($user_id, 'phonenumber', $phonenumber);
+    global $wpdb;
 
-            $user = wp_signon([
-                'user_login' => $email,
-                'user_password' => $password
-            ]);
+    $table = $wpdb->prefix . 'userinfo';
+
+    //$wpdb = show_errors();
+
+    $user_data = "CREATE TABLE IF NOT EXISTS " . $table . "(
+        id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        fullname text NOT NULL,
+        email text NOT NULL,
+        phonenumber text NOT NULL,
+        password text NOT NULL
+    );";
+    require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+    dbDelta($user_data);
+
+    global $wpdb;
+
+    $table = $wpdb->prefix . 'userinfo';
+
+    if (isset($_POST['register'])){
+        $info = [
+            'fullname' => $_POST['fullname'],
+            'email' => $_POST['email'],
+            'phonenumber' => $_POST['phonenumber'],
+            'password' => $_POST['password']
+            ];
     
-            if (!is_wp_error($user)) {
-                wp_set_current_user($user->ID);
-                wp_set_auth_cookie($user->ID);
-                do_action('wp_login', $user->user_login, $user);
-    
-    
-            wp_redirect(home_url());
-            exit;
-        } else {
-            $err = $user_id->get_error_message();
-        }
+        
+        $newuser = $wpdb->insert($table, $info);
+
+        wp_redirect('/eventmanagementsystem/login/');
     }
 
 ?>
@@ -58,10 +49,6 @@ if (is_user_logged_in()){
         <div class="text-center mb-2">
             <h3>Register</h3>
         </div>
-
-        <?php if (!empty($err)) : ?>
-            <p class="form-error"><?php echo esc_html($err); ?></p>
-        <?php endif; ?>
 
         <form action="<?php echo esc_url($_SERVER['REQUEST_URI']); ?>" method="post">
             <div class="form-group mb-2">
@@ -88,6 +75,6 @@ if (is_user_logged_in()){
             </div>
         </form>
     </div>
-</div> -->
+</div> 
 
 <?php //get_footer(); ?>
