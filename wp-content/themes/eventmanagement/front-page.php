@@ -60,8 +60,8 @@ $carousel3 = json_decode(json_encode($trips), true);
                 for ($i = 0; $i < min(count($carousel1), 4); $i++) {
                     $sport = $carousel1[$i];
                     ?>
-                    <form action="event-details.php" method="get" class="hover-zoom">
-                        <input type="hidden" name="event_id" value="<?php echo $sport['event_poster']; ?>">
+                    <form action="eventmanagementsystem/event-details/" method="get" class="hover-zoom">
+                        <input type="hidden" name="event_id" value="<?php echo $sport['event_id']; ?>">
                         <button type="submit" style="background:none;border:none;padding:0;">
                             <img src="<?php echo esc_url($sport['event_poster']); ?>"
                                 style="width:18vw;height:45vh;border-radius:5px;margin:10px;box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;">
@@ -86,8 +86,8 @@ $carousel3 = json_decode(json_encode($trips), true);
                   
                     ?>
 
-                    <form action="event-details.php" method="get">
-                        <input type="hidden" name="event_id" value="<?php echo $music['event_poster']; ?>">
+                    <form action="eventmanagementsystem/event-details/" method="get">
+                        <input type="hidden" name="event_id" value="<?php echo $music['event_id']; ?>">
                         <button type="submit" style="background:none;border:none;padding:0;">
                             <img src="<?php echo esc_url($music['event_poster']); ?>"
                                 style="width:18vw;height:45vh;border-radius:5px;margin:10px;box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;">
@@ -108,8 +108,8 @@ $carousel3 = json_decode(json_encode($trips), true);
                 for ($i = 0; $i < min(count($carousel2), 4); $i++) {
                     $model = $carousel2[$i];
                     ?>
-                    <form action="event-details.php" method="get">
-                        <input type="hidden" name="event_id" value="<?php echo $model['event_poster']; ?>">
+                    <form action="eventmanagementsystem/event-details/" method="get">
+                        <input type="hidden" name="event_id" value="<?php echo $model['event_id']; ?>">
                         <button type="submit" style="background:none;border:none;padding:0;">
                             <img src="<?php echo esc_url($model['event_poster']); ?>"
                                 style="width:18vw;height:45vh;border-radius:5px;margin:10px;box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;">
@@ -132,8 +132,8 @@ $carousel3 = json_decode(json_encode($trips), true);
                     $trip = $carousel3[$i];
                     ?>
 
-                    <form action="event-details.php" method="get">
-                        <input type="hidden" name="event_id" value="<?php echo $trip['event_poster']; ?>">
+                    <form action="eventmanagementsystem/event-details/" method="get">
+                        <input type="hidden" name="event_id" value="<?php echo $trip['event_id']; ?>">
                         <button type="submit" style="background:none;border:none;padding:0;">
                             <img src="<?php echo esc_url($trip['event_poster']); ?>"
                                 style="width:18vw;height:45vh;border-radius:5px;margin:10px;box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;">
