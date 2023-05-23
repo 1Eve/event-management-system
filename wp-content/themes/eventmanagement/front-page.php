@@ -28,7 +28,9 @@ $carousel3 = json_decode(json_encode($trips), true);
             <div class="carousel-item active">
                 <img src="<?php echo $carousel[0]['event_poster']; ?>" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
-                    <h5><?php echo $carousel[0]['event_name']; ?></h5>
+                    <h5>
+                        <?php echo $carousel[0]['event_name']; ?>
+                    </h5>
                     <p>Some representative placeholder content for the first slide.</p>
                 </div>
             </div>
@@ -53,7 +55,7 @@ $carousel3 = json_decode(json_encode($trips), true);
 
 
     <div
-        style="background-color:#ECF0F1 ;width:80%;height:auto;margin: 0 10%;border-radius:10px;box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;">
+        style="background-color:#ECF0F1 ;width:80vw;height:auto;margin: 0 10%;border-radius:10px;box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;">
         <div class="Sport">
             <div class="" style="color:black;padding:3px;font-weight:500;margin-left:10px;">
                 <p>Sports</p>
