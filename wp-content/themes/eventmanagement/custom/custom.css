@@ -9,7 +9,7 @@
 }
 
 .container-description {
-    padding: 0 2%;
+    padding: 2% 2%;
 }
 
 .event-description {
@@ -20,9 +20,8 @@
 }
 
 .event-img {
-    background-color: black;
     height: 100%;
-    background-image: url('../assests/miguel-paley-live-in-concert2023-05-19T13-25-32.168709.jpeg');
+    /* background-image: url(); */
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -50,22 +49,22 @@
 
 /* Submit Form */
 .TicketButton {
-    background-color: blue;
+    background-color: #7848f4;
     border-radius: 5px;
     padding: 12px 40px;
-    width: 200px;
+    width: 300px;
     text-align: center;
 
     
 }
 
 .BookTicket {
-    background-color: blue;
+    background-color: #7848f4;
     color: #fff;
     position: relative;
     padding-right: 40px;
     border: none;
-    font-size: 1.1em;
+    /* font-size: 1.1em; */
 }
 .BookTicket .icon {
     position: absolute;
