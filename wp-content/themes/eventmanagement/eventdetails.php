@@ -34,16 +34,24 @@ $event = $data[0];
             <h4>
                 <?php echo $event->event_name; ?>
             </h4>
-            <p class="host">Hosted by PATRICK MWANIKI</p>
-            <p>Put on your dancing shoes and join us for a memorable evening with Miguel Paley. Sample some Danish
-                hotdogs and ex-Yugoslavian BBQ, and enjoy a glass of wine at the firepit.</p>
+            <p class="host">
+                <?php echo $event->organizer_info; ?>
+            </p>
+            <p>
+                <?php echo $event->event_desc; ?>
+            </p>
             <div class="event-date">
                 <ion-icon class="icon" name="calendar-outline"></ion-icon>
-                <p>Wed, 7 Jun 2023, 16:30</p>
+                <p>
+                    <?php echo $event->event_date . ", " . $event->event_time; ?>
+                </p>
+
             </div>
             <div class="event-location">
                 <ion-icon class="icon" name="location-outline"></ion-icon>
-                <p><a href="https://www.bomasofkenya.co.ke/">Bomas of Kenya</a>, Nairobi</p>
+                <p><a href="https://www.bomasofkenya.co.ke/">
+                        <?php echo $event->event_location; ?>
+                    </a>, Nairobi</p>
             </div>
             <div class="TicketButton">
                 <button class="BookTicket" name="BookTicket" id="BookTicket">Book Your Ticket Now<i
@@ -67,8 +75,7 @@ $event = $data[0];
                         <h6>VIP TICKETS</h6>
                         <h6>VVIP TICKETS</h6>
                         <h6>TOTAL AMOUNT</h6>
-                        <h6 class="showtickets"></h6>
-                      
+                        <h6>TOTAL TICKETS</h6>
                     </div>
                     <div>
                         <div class="tickets">
@@ -102,9 +109,32 @@ $event = $data[0];
                                     <button class="add-btn" onclick="addVvipTicket()">+</button>
                                 </div>
                             </div>
-                            
+
                             <div class="amounts-section">
                                 <span id="total-ticket-amount">0</span>
+                            </div>
+                            <div class="bookbtn">
+                                <?php if (is_user_logged_in()) {
+                                    ?>
+
+                                    <form action="" method="post">
+                                        <input type="hidden" class="hiddentickets" name="bought_tickets"
+                                            value="<?php echo $event->bought_tickets ? $event->bought_tickets : 0; ?>">
+                                        <input type="submit" class="BookNow" name="BookNow" id="BookNow" value="Book Now">
+
+                                    </form>
+                                    <?php
+                                } else { ?>
+                                    <a href="">
+
+                                        <input type="submit" name="BookNow" id="BookNow" value="Login">
+
+                                    </a>
+
+                                <?php }
+
+
+                                ?>
                             </div>
                         </div>
                     </div>
@@ -112,27 +142,8 @@ $event = $data[0];
             </div>
         </div>
         <div class="booknow">
-            <span> <h6>Total Tickets:</h6></span>
-            <?php if(is_user_logged_in()){
-            ?>
+            <span></span>
 
-<form action="" method="post">
-    <input type="hidden" class="hiddentickets" name="bought_tickets" value="<?php echo $event->bought_tickets ? $event->bought_tickets:0; ?>">
-    <input type="submit" class="BookNow" name="BookNow" id="BookNow" value="Book Now">
-
-</form>
-            <?php
-            } else {?>
-<a href="">
-
-<input type="submit" name="BookNow" id="BookNow" value="Login">
-
-</a>
-                
-           <?php }
-            
-            
-            ?>
         </div>
     </section>
     <div class="more-events">
@@ -146,7 +157,7 @@ $event = $data[0];
     let vvipTicketCount = 0;
     let numberoftickets = Number(document.querySelector('.hiddentickets').value);
 
-    
+
 
     function addRegularTicket() {
         regularTicketCount++;
@@ -200,8 +211,8 @@ $event = $data[0];
         const vvipTicketCountElement = document.querySelector('.vvip-ticket-count');
         vvipTicketCountElement.textContent = vvipTicketCount;
 
-        let totaltickets= vvipTicketCount+vipTicketCount+regularTicketCount+numberoftickets;
-        document.querySelector('.BookNow').innerHTML=totaltickets;
+        let totaltickets = vvipTicketCount + vipTicketCount + regularTicketCount + numberoftickets;
+        document.querySelector('.BookNow').innerHTML = totaltickets;
         document.querySelector('.hiddentickets').value = totaltickets;
         console.log(totaltickets);
     }
