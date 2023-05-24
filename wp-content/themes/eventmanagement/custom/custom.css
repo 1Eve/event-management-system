@@ -10,24 +10,23 @@
 
 .container-description {
     padding: 2% 2%;
-    background: linear-gradient(to bottom right, #7848f4, #f0ebfd, #ffffff, black);
+    background: linear-gradient(to bottom right, #f0ebfd, #ffffff);
 
 
 }
 
 .event-description {
     display: grid;
-    grid-gap: 10px;
+    grid-gap: 25px;
     grid-template-columns: 1fr 1fr;
-    height: 100vh;
-  margin: 0 auto;
-  padding: 50px 35px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  background: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
-  border-radius: 15px;
-
+    height: fit-content;
+    margin: 0 auto;
+    padding: 50px 35px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    border-radius: 15px;
 }
 
 
@@ -87,20 +86,20 @@
     /* background: linear-gradient(to bottom right, #7848f4, #f0ebfd, #ffffff, black); */
 
 
-   
+
 }
 
 .section-pricing>div {
     width: 800px;
-       margin: 0 auto;
+    margin: 0 auto;
 
-       /* padding: 50px 35px; */
-       border: 1px solid rgba(255, 255, 255, 0.3);
-       background: rgba(255, 255, 255, 0.2);
-       box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-       backdrop-filter: blur(5px);
-       border-radius: 15px;
-     
+    padding: 50px 35px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    /* border-radius: 15px; */
+
 }
 
 /* close button */
@@ -121,24 +120,44 @@
 }
 
 /*  */
+.pricing-grid p {
+    margin-bottom: 0;
+}
+
 .pricing-grid {
-    display: grid;
-    grid-template-columns: 20% 80%;
-}
-.subtract-btn,.add-btn{
-    margin: 0 5px;
-}
-.pricing-header {
     display: flex;
     flex-direction: column;
+}
+
+.pricing-grid>div {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.pricing-grid>div>div {
+    display: flex;
     justify-content: space-between;
 }
-.bookbtn form,.amounts-section span{
+
+.pricing-p {
+    padding-right: 22px;
+}
+
+.subtract-btn,
+.add-btn {
+    margin: 0 5px;
+}
+
+.bookbtn form,
+.amounts-section span {
     margin-left: 20px;
     width: 92%;
     display: flex;
     justify-content: flex-end;
 }
+
 .tickets div {
     display: flex;
     justify-content: space-between;
@@ -168,6 +187,19 @@
     font-weight: bold;
 }
 
+.Book {
+    display: flex;
+    justify-content: end;
+}
+
+.Book input {
+    background-color: #7848f4;
+    color: #fff;
+    padding: 10px 24px;
+    border: none;
+    border-radius: 5px;
+    padding-right: 22px;
+}
 
 /* More Events */
 
@@ -180,7 +212,7 @@
     z-index: 9999;
     background-color: #fff;
     padding: 20px;
-    display: none;
+    /* display: none; */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -198,7 +230,7 @@
 /* Book Now */
 .booknow {
     display: flex;
-   justify-content: space-between;
+    justify-content: space-between;
     margin-top: 1em;
 }
 
@@ -265,4 +297,50 @@ footer {
 
 hr {
     color: #382B7F;
+}
+
+
+/* IMAGE HOVER */
+.effect2 {
+    position: relative;
+    display: inline-block;
+    margin-right: 10%;
+    overflow: hidden;
+    /* Add this line to hide the overflow */
+}
+
+.effect2 img {
+    width: 100%;
+    max-width: 300px;
+}
+
+.effect2 .hover-text {
+    position: absolute;
+    top: -100%;
+    /* Set initial position above the image */
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    /* Align content in a column */
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    text-align: center;
+    color: aqua;
+    font-size: 16px;
+    opacity: 0;
+    transition: top 0.3s ease, opacity 0.3s ease;
+    /* Add top transition */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.effect2:hover .hover-text {
+    top: 0;
+    /* Move the overlay to its final position */
+    opacity: 1;
 }
