@@ -43,13 +43,14 @@ if ($curr_page == 'register' || $curr_page == 'login') :
     </nav>
 
 <?php else :
-    $fullname = ''; // Initialize $fullname with an empty string
-    $is_admin = false; // Initialize $is_admin with false
+    $fullname = '';
+    $is_admin = false; 
 
     if (is_user_logged_in()) :
         $user = wp_get_current_user();
         $is_admin = current_user_can('manage_options');
         $fullname = $user->display_name;
+       
 
         global $wpdb;
         $table = $wpdb->prefix . 'userinfo';
@@ -65,20 +66,26 @@ if ($curr_page == 'register' || $curr_page == 'login') :
         }
     endif;
     ?>
+<?php
+$logo = get_template_directory_uri() . "/assets/final design.png";
+$logo_link = "/eventmanagementsystem/";
+?>
 
     <nav class="main-nav">
         <div class="plana-navbar">
-            <a class="display-6" href="/eventmanagementsystem/">Plana</a>
+        <img src="<?php echo $logo; ?>" class="logo" alt='logo' style="height: 10vh; cursor:pointer;" />
+            <!-- <a class="display-6" href="/eventmanagementsystem/">Plana</a> -->
+            <?php  //var_dump();?>
         </div>
-        <div class="d-flex flex-row justify-content-around align-items-center gap-3">
-            <div class="my-account">
+        <div class="d-flex flex-row justify-content-around align-items-center gap-2 w-25">
+            <div class="account pt-2 pb-2">
                 <ion-icon name="person-outline"></ion-icon>
-                <a href="eventmanagementsystem/account/"><?php echo $fullname; ?>'s Account</a>
+                <a href="eventmanagementsystem/account/"><?php echo $fullname==''? 'My': $fullname."'s"; ?> Account</a>
             </div>
             <div class="signout">
                 <?php
                 if ($is_admin) {
-                    echo '<a href="eventmanagementsystem/logout">Sign Out</a>';
+                    echo '<a href="/eventmanagementsystem/">Sign Out</a>';
                 } else {
                     if (isset($_COOKIE['currentuser']) && $_COOKIE['currentuser']) {
                         echo '<a href="eventmanagementsystem/login">Sign Out</a>';

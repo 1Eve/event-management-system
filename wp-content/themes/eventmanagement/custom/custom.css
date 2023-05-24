@@ -206,10 +206,23 @@
 
 
 /* Header */
-
+.main-nav ion-icon{
+    color: black;
+}
+.main-nav ion-icon:hover {
+    cursor: pointer;
+    background-color: #E6E6FA;
+    color: #6a5acd ;
+    border-bottom: 1px solid #fff;
+}
+.account:hover {
+    cursor: pointer;
+    background-color: #E6E6FA;
+    color: #6a5acd ;
+    border-bottom: 1px solid #fff;
+    padding-left: 10px;
+}
 .main-nav {
-    background-color: #0C0434;
-    color: #fff;
     display: flex;
     justify-content: space-between;
     padding: 5px 15px;
@@ -217,14 +230,18 @@
 }
 
 .main-nav a {
-    color: #fff;
+    color: black;
     text-decoration: none;
-
+    padding: 10px;
+    border-radius: 5px;
+    border: hidden;
+    font-weight: bold;
 }
 
 .main-nav a:hover {
     cursor: pointer;
-    color: #fff;
+    background-color: #E6E6FA;
+    color: #6a5acd ;
     border-bottom: 1px solid #fff;
 }
 
