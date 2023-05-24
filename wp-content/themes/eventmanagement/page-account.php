@@ -23,11 +23,22 @@ if (!empty($email)) {
     $user = $wpdb->get_row($wpdb->prepare("SELECT * FROM $table WHERE email = '%s'", $useremail));
 
     if (current_user_can('manage_options')) {
-        $admin_user = $wpdb->get_row("SELECT * FROM $admin_table WHERE ID = $user->ID");
-        // $admin_user = get_current_user_details();
+        // $admin_user = $wpdb->get_row("SELECT * FROM $admin_table WHERE ID = $user->ID");
+        $admin_user = get_current_user_details();
     }
 }
 ?>
+
+<!-- code to disable right click and select -->
+<script>
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    });
+
+    document.addEventListener('selectstart', function(e) {
+        e.preventDefault();
+    });
+</script>
 
 <div class="container-fluid bg-light pt-5 pb-5">
     <div class="row justify-content-center align-items-center h-100">
@@ -41,6 +52,7 @@ if (!empty($email)) {
                     <ion-icon name="pencil" style="color: #7070E9"></ion-icon>
                     <a href="eventmanagementsystem/account-update/" class="text-decoration-none cursor-pointer" style="color: #7070E9">Edit</a>
                 </div>
+                <?php if (!empty($user)) : ?>
                 <div class="d-flex flex-row gap-5 align-items-center justify-content-start ps-3">
                     <div class="fw-bold text-start">
                         <ul class="list-unstyled">
@@ -52,18 +64,18 @@ if (!empty($email)) {
                     </div>
                     <div class="text-start">
                         <ul class="list-unstyled">
-                            <?php if (!empty($user)) : ?>
                                 <li><?php echo $user->fullname; ?></li>
                                 <li><?php echo $user->email; ?></li>
                                 <li><?php echo $user->phonenumber; ?></li>
                                 <li><?php echo $user->password; ?></li>
-                            <?php else : ?>
-                                <li>No user data found.</li>
-                            <?php endif; ?>
-                        </ul>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
+                <?php endif; ?>
+                                <?php 
+                                    $admin_user = get_current_user_details();
+                                    ?>
 
             <?php if (current_user_can('manage_options') && !empty($admin_user)) : ?>
                 <hr class="opacity-25">
@@ -73,16 +85,19 @@ if (!empty($email)) {
                         <ul class="list-unstyled">
                             <li>Admin Name:</li>
                             <li>Admin Email:</li>
+                            <li>Admin Password:</li>
                         </ul>
                     </div>
                     <div class="text-start">
                         <ul class="list-unstyled">
-                            <li><?php echo $admin_user->display_name; ?></li>
-                            <li><?php echo $admin_user->user_email; ?></li>
+                            <li><?php echo $admin_user['fullname']; ?></li>
+                            <li><?php echo $admin_user['email']; ?></li>
+                            <li><?php echo $admin_user['password']; ?></li>
                         </ul>
                     </div>
                 </div>
             <?php endif; ?>
+
         </div>
     </div>
 </div>

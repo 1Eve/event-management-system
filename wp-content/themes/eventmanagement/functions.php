@@ -50,38 +50,24 @@ add_action('init', 'eventtheme_setup');
  $errormessage;
 
  function get_current_user_details()
-{
-    $curr_user = [];
-    $user = wp_get_current_user();
-    $curr_user['email'] = $user->user_email;
-    $id = $user->ID;
-    $curr_user['id'] = $user->ID;
-
-    if (current_user_can('manage_options')) {
-        $admin_user = get_userdata($id);
-        $curr_user['fullname'] = $admin_user->display_name;
-        $curr_user['phonenumber'] = get_user_meta($id, 'phonenumber', true);
-        $curr_user['password'] = $admin_user->user_pass;
-    } else {
-        global $wpdb;
-        $table = $wpdb->prefix . 'userinfo';
-        $useremail = str_replace('"', '', $curr_user['email']);
-        $useremail[0] = '*';
-        $useremail[-1] = '*';
-        $useremail = str_replace('*', '', $useremail);
-        $user = $wpdb->get_row($wpdb->prepare("SELECT * FROM $table WHERE email = %s", $useremail));
-
-        if ($user) {
-            $curr_user['fullname'] = $user->fullname;
-            $curr_user['phonenumber'] = $user->phonenumber;
-            $curr_user['password'] = $user->password;
-        } else {
-            // Handle the case when no user data is found
-            // You can set default values or display an error message
-            $curr_user['fullname'] = 'No user data found';
-            $curr_user['phonenumber'] = '';
-            $curr_user['password'] = '';
-        }
-    }
-    return $curr_user;
-}
+ {
+     $curr_user = [];
+     $user = wp_get_current_user();
+     $curr_user['email'] = $user->user_email;
+     $id = $user->ID;
+     $curr_user['id'] = $user->ID;
+ 
+     if (current_user_can('manage_options')) {
+         $admin_user = get_userdata($id);
+         $curr_user['fullname'] = $admin_user->display_name;
+         $curr_user['email'] = $admin_user->user_email; 
+         $curr_user['password'] = $admin_user->user_pass;
+     } else {
+         $curr_user['fullname'] = 'No user data found';
+         $curr_user['email'] = '';
+         $curr_user['password'] = '';
+     }
+ 
+     return $curr_user;
+ }
+ 
