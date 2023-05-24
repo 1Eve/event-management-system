@@ -34,12 +34,12 @@ endif;
 
 <?php
 $curr_page = basename(get_permalink());
-
+$logo = get_template_directory_uri() . "/assets/final design.png";
 if ($curr_page == 'register' || $curr_page == 'login') :
     ?>
 
-    <nav class="reg-title text-center pt-2 pb-2" style="background-color: #0C0434;">
-    <a class="display-6" href="/eventmanagementsystem/" style="text-decoration: none; color: white">PLANA</a>
+    <nav class="reg-title text-center pt-2 pb-2" style="background-color: #fff;">
+        <a href="/eventmanagementsystem/"><img src="<?php echo $logo; ?>" class="logo" alt='logo' style="height: 10vh; cursor:pointer;" /></a>
     </nav>
 
 <?php else :
@@ -68,12 +68,11 @@ if ($curr_page == 'register' || $curr_page == 'login') :
     ?>
 <?php
 $logo = get_template_directory_uri() . "/assets/final design.png";
-$logo_link = "/eventmanagementsystem/";
 ?>
 
     <nav class="main-nav">
         <div class="plana-navbar">
-        <img src="<?php echo $logo; ?>" class="logo" alt='logo' style="height: 10vh; cursor:pointer;" />
+        <a href="/eventmanagementsystem/"><img src="<?php echo $logo; ?>" class="logo" alt='logo' style="height: 10vh; cursor:pointer;" /></a>
             <!-- <a class="display-6" href="/eventmanagementsystem/">Plana</a> -->
             <?php  //var_dump();?>
         </div>

@@ -222,6 +222,9 @@
     border-bottom: 1px solid #fff;
     padding-left: 10px;
 }
+.plana-navbar a:hover{
+    background-color: white;
+}
 .main-nav {
     display: flex;
     justify-content: space-between;
