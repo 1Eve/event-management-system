@@ -64,20 +64,6 @@ $event = $data[0];
         <div id="popupContent" class="hidden">
             <span class="close">&times;</span>
             <div>
-
-            </div>
-            <div>
-
-            </div>
-            <div>
-
-            </div>
-        </div>
-    </section>
-    <section id="popup" class="section-pricing">
-        <div id="popupContent" class="hidden">
-            <span class="close">&times;</span>
-            <div>
                 <h4>Check Out</h4>
                 <p>Wed, 7 Jun 2023, 16:30</p>
                 <p><a href="">Bomas of Kenya</a>, Nairobi</p>
