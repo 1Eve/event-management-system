@@ -27,14 +27,16 @@ $data = $data[0];
             <input type="text" style="width:100%;" placeholder="Enter event name" value="<?php echo $data->event_poster; ?>"  name="edt_event_poster" required>
         </div>
 
-        <label>Event Category:</label><br>
-        <select class="form-select-lg" aria-label="Default select example" style="margin-top:5px;width:100%;" name="edt_event_category">
-            <option selected disabled>Choose category</option>
-            <option <?php if ($data->event_category == "Sport Events") echo "selected"; ?>>Sport Events</option>
-            <option <?php if ($data->event_category == "Music Concerts") echo "selected"; ?>>Music Concerts</option>
-            <option <?php if ($data->event_category == "Modelling") echo "selected"; ?>>Modelling</option>
-            <option <?php if ($data->event_category == "Trips & Adventure") echo "selected"; ?>>Trips & Adventure</option>
-        </select>
+        <div style="width:100vw;">
+            <label>Event Category:</label><br>
+            <select class="" aria-label="" style="margin-top:5px;width:100vh;" name="edt_event_category">
+                <option style="width:10vw;" selected disabled>Choose category</option>
+                <option <?php if ($data->event_category == "Sport Events") echo "selected"; ?>>Sport Events</option>
+                <option <?php if ($data->event_category == "Music Concerts") echo "selected"; ?>>Music Concerts</option>
+                <option <?php if ($data->event_category == "Modelling") echo "selected"; ?>>Modelling</option>
+                <option <?php if ($data->event_category == "Trips & Adventure") echo "selected"; ?>>Trips & Adventure</option>
+            </select>
+        </div>
 
         <div>
             <label>Event Date:</label><br>
@@ -53,8 +55,8 @@ $data = $data[0];
 
         <div >
             <label>Event Description:</label><br>
-            <textarea class="form-control" rows="4" type="text" style="width:100%;" value="<?php echo $data->event_desc; ?>"  placeholder="Enter event details"
-                name="edt_event_desc" required></textarea>
+            <textarea class="form-control" rows="4" type="text" style="width:100%;" placeholder="Enter event details"
+                name="edt_event_desc" required><?php echo $data->event_desc; ?></textarea>
         </div>
         <div >
             <label>Total Tickets:</label><br>
